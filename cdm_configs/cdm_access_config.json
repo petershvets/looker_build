@@ -1,1 +1,11 @@
+{
+ "group_role_map":{"@CLIENT_ID@_Business_Users":{"CDM Business User":["base_cdm_sales_cust_model", "c_mn_cdm_model"]
+                                                    },
+                   "@CLIENT_ID@_Dashboard_Only_Users":{"CDM Dashboard Only":["base_cdm_sales_cust_model", "c_mn_cdm_model"]
+                                         },
+                   "@CLIENT_ID@_Reporting_Partner_Users":{"CDM Dashboard Only":["base_cdm_sales_reporter_model"]
+                                         }
 
+                  }
+
+}
