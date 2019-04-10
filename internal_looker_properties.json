@@ -1,0 +1,256 @@
+{
+  "_DO NOT MODIFY":"DO NOT modify parameters below without PD recommendation",
+  "api_endpoint":"/api/3.0/",
+  "api_port":"19999",
+
+  "_desc_LOOKER_REMOTE_REPOSITORIES":"Looker Production (prod_repo) and Customer (customer_repo) Git repositories. Define at deployment time",
+  "_customer_repo":"looker_prod_gpm",
+  "_service_name":"github",
+
+  "customer_repo":"",
+  "service_name":"bare",
+
+  "_desc_PRODUCT_VIEW_PREFIX":"Parameters define view name token for respective products",
+  "cpq_views_prefix":["mn_cpq", "mn_sfdc", "mn_dw_etl"],
+  "ls_views_prefix":["mn"],
+  "gpm_views_prefix":["mn_gpm", "mn_sfdc", "mn_dw_etl"],
+  "gtm_views_prefix":["mn_gtm", "mn_cpq", "mn_sfdc", "mn_dw_etl"],
+  "cdm_views_prefix":["mn_cdm"],
+  "ht_views_prefix":["mn"],
+  
+  "_desc_PRODUCTS":"Defines a list of valid products",
+  "products":["cpq", "gpm", "gtm", "cpqsap", "cdm","ls","ht"],
+
+  "_desc_PRODUCTS_ATTRIBUTES_MAPPING":"Defines product related attributes: apps, roles related to specific product",
+  "cpq":{"apps":["cpq_quote", "clm_contract"],
+          "roles":[],
+          "user_attributes":{
+                              "cpq_access_user_name":{
+                                                      "label":"CPQ Access User Name",
+                                                      "data_type":"string",
+                                                      "default_value":"NULL",
+                                                      "hide_values":"no",
+                                                      "user_access":"view"
+                                                      },
+                              "sfdc_instance":{
+                                                "label":"Salesforce Instance URL",
+                                                "data_type":"string",
+                                                "default_value":"https://<instance name>.salesforce.com/",
+                                                "hide_values":"no",
+                                                "user_access":"view"
+                                              }
+                            }
+        },
+  "gpm":{"apps":["gpm_pricing", "gpm_approval", "gpm_competitor", "gpm_asim"],
+         "roles":[],
+         "user_attributes":{
+                            "access_user_name":{
+                                                "label":"GPM Access User Name",
+                                                "data_type":"string",
+                                                "default_value":"NULL",
+                                                "hide_values":"no",
+                                                "user_access":"view"
+                                                }
+                            },
+         "default_replace_token_map":{"@MODEL_TOKEN@":"GPM",
+                                      "@EXPLORE_TOKEN@":"",
+                                      "@DASHBOARD_TOKEN@":""
+                                     }
+        },
+  "ls":{"apps":["ls_sales_intelligence","ls_government_expl","ls_payer_expl","ls_provider_expl","ls_master_data_expl","ls_provider_intelligence","ls_validata_explorer"],
+      "roles":["Biz Users"],
+      "user_attributes":{
+                          "access_user_id":{
+                                            "label":"User Login ID",
+                                            "data_type":"string",
+                                            "default_value":"NULL",
+                                            "hide_values":"no",
+                                            "user_access":"view"
+                                           },
+                          "ls_rc_url":{
+                                            "label":"LS RC URL",
+                                            "data_type":"string",
+                                            "default_value":"http://<hostname>/modeln/BusinessNetwork?NH",
+                                            "hide_values":"no",
+                                            "user_access":"view"
+                                      }
+                        }
+    },
+  "gtm":{"apps":["gtm_tender"],
+          "roles":[],
+          "user_attributes": {"cpq_access_user_name": {
+                                                       "label": "CPQ Access User Name",
+                                                       "data_type": "string",
+                                                       "default_value": "NULL",
+                                                       "hide_values": "no",
+                                                       "user_access": "view"
+                                                      }
+                              }
+        },
+  "cpqsap":{"apps":[], "roles":[]},
+  "cdm":{"apps":["cdm_base", "cdm_sales"],
+         "roles":["CDM Business User", "CDM Dashboard Only"],
+         "groups":[],
+         "user_attributes":{"address_type_tier2":{"label":"Address Type Tier2",
+                                                  "data_type":"string",
+                                                  "default_value":"bill_to",
+                                                  "hide_values":"no",
+                                                  "user_access":"view"},
+                            "address_type_tier3":{"label":"Address Type Tier3",
+                                                  "data_type":"string",
+                                                  "default_value":"ship_to",
+                                                  "hide_values":"no",
+                                                  "user_access":"view"},
+                            "hierarchy":{"label":"Hierarchy",
+                                         "data_type":"string",
+                                         "default_value":"DEFAULT",
+                                         "hide_values":"no",
+                                         "user_access":"view"},
+			"reporter_id":{"label":"Reporter Id",
+                                        "data_type":"string",
+                                        "default_value":"0",
+                                        "hide_values":"no",
+                                        "user_access":"view"}
+
+                           },
+          "visual_ext_files":["d3.v4.js", "multitreemap.js"]
+        },
+  "ht":{"apps":["ht_price_intelligence","ht_revenue_intelligence"], 
+        "roles":["Biz Users"],
+		"user_attributes":{
+                          "access_user_id":{
+                                            "label":"User Login ID",
+                                            "data_type":"string",
+                                            "default_value":"NULL",
+                                            "hide_values":"no",
+                                            "user_access":"view"
+                                           },
+                          "pd_lower_threshold":{
+                                            "label":"Profitability Dashboard Lower Threshold Value",
+                                            "data_type":"number",
+                                            "default_value":"70",
+                                            "hide_values":"no",
+                                            "user_access":"view"
+                                           },
+                          "pd_upper_threshold":{
+                                            "label":"Profitability Dashboard Upper Threshold Value",
+                                            "data_type":"number",
+                                            "default_value":"90",
+                                            "hide_values":"no",
+                                            "user_access":"view"
+                                      },
+                          "rtd_lower_threshold":{
+                                            "label":"Revenue Trends Dashboard Lower Threshold Value",
+                                            "data_type":"number",
+                                            "default_value":"-10",
+                                            "hide_values":"no",
+                                            "user_access":"view"
+                                      },
+                          "rtd_upper_threshold":{
+                                            "label":"Revenue Trends Dashboard Upper Threshold Value",
+                                            "data_type":"number",
+                                            "default_value":"0",
+                                            "hide_values":"no",
+                                            "user_access":"view"
+                                      },
+                          "oppreg_lower_threshold":{
+                                            "label":"Opp/Reg Dashboard Lower Threshold Value",
+                                            "data_type":"number",
+                                            "default_value":"70",
+                                            "hide_values":"no",
+                                            "user_access":"view"
+                                      },
+                          "oppreg_upper_threshold":{
+                                            "label":"Opp/Reg Dashboard Upper Threshold Value",
+                                            "data_type":"number",
+                                            "default_value":"90",
+                                            "hide_values":"no",
+                                            "user_access":"view"
+                                      }
+                           }
+		},
+
+  "_desc_APPLICATIONS_TO_MODELS_MAPPING":"Applications (Key) to Models (Values) relationship. Model names must be fully spelled without file extension.",
+  "cpq_quote":[ "base_cpq_clm_base_explores", "base_cpq_etl_info_model", "base_cpq_quote_app_model", "base_cpq_quote_app_explores"],
+  "clm_contract":["base_cpq_clm_base_explores",  "base_cpq_etl_info_model", "base_clm_app_model", "base_clm_app_explores"],
+  "gpm_pricing":["base_gpm_apps_base_model", "base_gpm_etl_info_model", "base_gpm_map_layers_model", "base_pricing_app_model", "base_pricing_app_explores"],
+  "gpm_approval":["base_gpm_apps_base_model", "base_gpm_etl_info_model", "base_gpm_map_layers_model", "base_approval_app_model", "base_approval_app_explores"],
+  "gpm_competitor":["base_gpm_apps_base_model", "base_gpm_etl_info_model", "base_gpm_map_layers_model", "base_competitor_app_model", "base_competitor_app_explores"],
+  "gpm_asim":["base_gpm_apps_base_model", "base_gpm_etl_info_model", "base_gpm_map_layers_model", "base_asim_app_model", "base_asim_app_explores"],
+  "gtm_tender":["base_gtm_tender_app_model", "base_gtm_tender_app_explores"],
+  "cdm_base":["base_mn_cdm_model"],
+
+  "ls_provider_intelligence":["base_ls_database_connection","base_ls_explores","base_ls_etl_info_model", "base_ls_provider_int_explores","base_ls_provider_int_app_model"],
+  "ls_sales_intelligence":["base_ls_database_connection","base_ls_explores","base_ls_etl_info_model","base_ls_provider_int_explores","base_si_app_model"],
+  "ls_validata_explorer":["base_ls_database_connection","base_ls_explores","base_ls_etl_info_model","base_ls_validata_explorer_app_model"],
+  "ls_government_expl":["base_ls_database_connection","base_ls_explores","base_ls_etl_info_model","base_ls_government_explorer_app_model"],
+  "ls_payer_expl":["base_ls_database_connection","base_ls_explores","base_ls_etl_info_model","base_ls_payer_explorer_app_model"],
+  "ls_provider_expl":["base_ls_database_connection","base_ls_explores","base_ls_etl_info_model","base_ls_provider_explorer_app_model"],
+  "ls_master_data_expl":["base_ls_database_connection","base_ls_explores","base_ls_etl_info_model","base_ls_master_data_explorer_app_model"],
+
+  "cdm_sales":["base_mn_cdm_model", "base_cdm_sales_model", "base_cdm_sales_cust_model", "base_cdm_sales_reporter_model"],
+
+  "ht_price_intelligence":["base_ht_database_connection","base_ht_explores","base_ht_include_views","base_ht_quote_contract_app_model","base_ht_pos_combined_app_model","base_ht_rebates_app_model","base_ht_pi_app_model"],
+  "ht_revenue_intelligence":["base_ht_database_connection","base_ht_explores","base_ht_include_views","base_ht_quote_contract_app_model","base_ht_pos_combined_app_model","base_ht_rebates_app_model","base_ht_ri_app_model","base_ht_oppreg_app_model","base_ht_debits_app_model"],
+  
+  "_desc_PERMISION_SETS":"Permission sets to be created at deployment. Format - {Permission Set Name:[permissions]}",
+  "permission_sets": {
+                      "Biz Users": ["access_data",
+                                    "create_public_looks",
+                                    "create_table_calculations",
+                                    "download_with_limit",
+                                    "download_without_limit",
+                                    "explore",
+                                    "manage_homepage",
+                                    "manage_spaces",
+                                    "save_content",
+                                    "schedule_look_emails",
+                                    "see_drill_overlay",
+                                    "see_lookml_dashboards",
+                                    "see_looks",
+                                    "see_user_dashboards"
+                                  ],
+                      "Power Users": ["access_data",
+                                      "create_public_looks",
+                                      "create_table_calculations",
+                                      "download_with_limit",
+                                      "download_without_limit",
+                                      "explore",
+                                      "manage_homepage",
+                                      "manage_spaces",
+                                      "save_content",
+                                      "schedule_look_emails",
+                                      "see_drill_overlay",
+                                      "see_lookml_dashboards",
+                                      "see_looks",
+                                      "see_user_dashboards"
+                                    ],
+                      "CDM Business User":["access_data",
+                                                      "create_public_looks",
+                                                      "download_without_limit",
+                                                      "explore",
+                                                      "save_content",
+                                                      "schedule_external_look_emails",
+                                                      "schedule_look_emails",
+                                                      "see_drill_overlay",
+                                                      "see_lookml_dashboards",
+                                                      "see_looks",
+                                                      "see_schedules",
+                                                      "see_user_dashboards"
+                                                     ],
+                      "CDM Dashboard Only":["access_data",
+                                                       "see_lookml_dashboards",
+                                                       "see_looks",
+                                                       "see_user_dashboards",
+                                                       "see_drill_overlay",
+                                                       "download_without_limit"
+                                                      ]
+
+      },
+  "access_config_file_name":"access_config.json",
+  "d3_files_location":"d3_files",
+  "replacement_tokens_file_name":"replacement_tokens.json",
+  "token_indicator":"@"
+
+
+}

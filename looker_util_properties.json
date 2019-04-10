@@ -1,0 +1,66 @@
+{
+  "_desc_LOOKER_SERVER_PROPERTIES":"Looker instance properties, should be defined at deployment time",
+  "looker_deployment_base":".",
+
+  "api_host":"",
+  "ClientID":"",
+  "ClientSecret":"",
+
+  "_server_version": "There an old style on 5.16 and prior and new style for dashboards json for 5.18. depending on the server version, use one of the other.",
+  "server_version": "5.18",
+
+  "_test_hidden_explores": "True/False - API can skip or test explores, marked as hidden",
+  "test_hidden_explores": "False",
+
+  "_fast_check": "True/False - API will add weird WHERE statement to explore to return 0 rows.",
+  "fast_explore_check": "False",
+
+
+  "_attribute_limit": "Maximum Number of attributes to do a fast check for explores.",
+  "attribute_limit": 1000,
+
+  "_project_name": "Mandatory Looker Project name. API will fetch models/explores from it.",
+  "project_name": "",
+
+  "_models": "List of models. Can be empty - then all models will be validated in a project. If explores or dashboards provided, ignored.",
+  "models":[],
+
+  "_dashboards": "List of dashboards with models if only a subset required: {\"modelname\": \"dashboard name\"}",
+  "dashboards": {},
+
+  "_explores": "List of explores with models if only a subset required: {\"modelname\": \"explore name\"}",
+  "explores": {},
+  
+  "_space_remap":"Space rempa provides details on how to remap objects. 'Old Namespace':'New Namespace' - map one name to another. '':'Something' - everything will be mapped to New Namespace.   'Old Namespace':'' - everything for old will be mapped to original space;   '':'' - same space name will be used",
+  "space_remap":{"":""},
+
+  "_data_directory": "This is a folder under deployment base where files will be created or read from",
+  "data_directory": "data_files",
+
+  "_name_prefix": "If provided, it will be prepended to all Looks/Dashboard names during import",
+  "name_prefix": "",
+
+  "_model_remap":"List of models to remap during import. '':'' - no changes, same name will be used. '':'new' - new model suffix will be appended to all models. No _ required. 'old':'new' - if old found, will be replaced by new.",
+  "model_remap":{"":""},
+
+  "_default_filters":"List of filters to pass along to the explore when query is executed. If the dimension name is found in the query, filter will be appended to the query. This is used to avoid full table scans when validating explores. Option allows to provide value for any column (just doing the name match) or for a specific explore column only. Format:  {  \"Dimension name1\": \"value1\", \"Dimension name2\": \"value2\",  \"Explorer name1\": {    \"Dimension name1\": \"value1\",  },  \"Explorer name2\": { \"Dimension name1\": \"value1\" } }",
+  "default_filters": {
+    "mn_gpm_exchange_rate_fact.type": "Standard Exchange Rate",
+    "mn_gpm_exchange_rate_fact.to_currency_code": "USD",
+    "mn_gpm_market_basket_dim.conversion_type": "Not Selected",
+    "mn_gpm_market_basket_dim.indication_name": "Not Selected",
+    "mn_gpm_market_basket_dim_no_ns.conversion_type": "Not Selected",
+    "mn_gpm_market_basket_dim_no_ns.indication_name": "Not Selected",
+    "mn_gpm_country_dim.country_name": "Argentina"
+  },
+
+  "_dashboard_default_filters":"List of filters to pass along to the dashboards when query is executed.Any default value in the filter dashboard is using will be automatically passed to the query if the element listens on a filter. This option allows to add more values to the filters. If the dimension name is found in the query, filter will be appended to the query. Format: {  \"Dimension name1\": \"value1\",  \"Dimension name2\": \"value2\"}",
+  "dashboard_default_filters": {
+    "mn_gpm_adv_simulation_dim.adv_sim_name": ""
+  },
+
+ "_desc_DEPLOYMENT_APP_PROPERTIES":"Looker deployment properties, should be defined at deployment time",
+  "log_directory":"log",
+  "debug_level": "EXTRA"
+
+}

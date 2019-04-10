@@ -1,0 +1,10 @@
+{
+ "group_role_map":{"<GroupName_@CLIENT_ID@">:{"<Permission Set Name>":["<model name>", "<model name>"],
+                                                     "<Permission Set Name>":["model name"]
+                                                    },
+                   "<GroupName>":{"Permission Set Name":["model name"]
+                                         }
+
+                  }
+
+}

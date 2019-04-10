@@ -1,0 +1,75 @@
+{
+  "_desc_LOOKER_SERVER_PROPERTIES":"Looker instance properties, should be defined at deployment time",
+  "looker_deployment_base":"/home/mnadmin",
+  "looker_location":"/opt/looker/looker/models",
+  "looker_viz_extn_location":"/opt/looker/looker/plugins/visualizations",
+
+  "api_host":"https://",
+  "ClientID":"",
+  "ClientSecret":"",
+
+  "_desc_PROJECT_NAME":"Looker Project name. Mandatory for Single and optional for Multi Tenant deployments",
+  "project_name":"",
+
+  "_desc_SINGLE_TENANT_DEPLOYMENT":"Indicates whether single or multiple tenants will be deploying onto single Looker instance. Set to N for multitenant deployment",
+  "single_tenant_deployment":"Y",
+
+  "_desc_CUSTOMER_SPECIFIC_PROPERTIES":"Customer specific properties. These should be defined at deployment time",
+  "_desc_product_prefix":"Defines which Product line is deployed. Values: gpm, cpq, clm, cpqsap, gtm, ht",
+  "product_prefix":"",
+  "_desc_product_apps":"User defined list of Looker Applications user wants to deploy",
+  "product_apps":[],
+
+  "_available_product_apps":"Below is a list of currently supported apps. You can change the tag name to product_apps or copy the list above",
+  "_cpq_product_apps":["cpq_quote", "clm_contract"],
+  "_gpm_product_apps":["gpm_pricing", "gpm_approval", "gpm_competitor", "gpm_asim"],
+  "_gtm_product_apps":["gtm_tender"],
+  "_ls_product_apps":["ls_sales_intelligence","ls_government_expl","ls_payer_expl","ls_provider_expl","ls_master_data_expl","ls_provider_intelligence","ls_validata_explorer"],
+  "_ht_product_apps":["ht_price_intelligence","ht_revenue_intelligence"],
+
+  "_desc_DBCONNECTION_PROPERTIES":"Describes DB Connection properties. These should be defined at deployment time",
+  "dbconn_db_type":"oracle",
+  "dbconn_host":"",
+  "dbconn_port":"1521",
+  "dbconn_dialect_name": "oracle",
+  "dbconn_username":"",
+  "dbconn_user_password":"",
+  "dbconn_database":"mndb11g.modeln.com",
+
+  "_desc_LOOKER_OFFLINE_REPOSITORIES":"Looker repositories for offline deployment. PS repo is optional",
+  "prod_repo":"mn_intelligence_revvy_prod",
+  "prod_repo_branch":"Spring2018_GA",
+  "ps_repo": "",
+  "ps_repo_branch":"",
+
+  "_desc_LOOKER_COPS_OFFLINE_REPOSITORIES":"COPS provided folders with pre-cloned OOB and PS repositories",
+  "prod_repo_local_dir":"",
+  "ps_repo_local_dir":"",
+
+ "_desc_DEPLOYMENT_APP_PROPERTIES":"Looker deployment properties, should be defined at deployment time",
+  "log_directory":"log",
+  "debug_level": "EXTRA",
+
+  "_desc_PROJECT_MODE":"Project Mode defines if project is connected to remote github or bare repository at deployment time",
+  "project_mode":"offline",
+
+  "_desc_HIDE_OOB_EXPLORES":"This configuration needs to be changed to 'Y' if PS has extended OOB models. This avoids showing duplicate explores",
+  "hide_oob_explores":"N",
+
+  "desc_EXISTING_CUSTOM_MODEL_DEPLOYMENT_ID":"If defined, custom models with deployment token will be renamed by replacing existing id with current deployment id",
+  "existing_model_deployment_id":"",
+
+  "desc_UPDATE_PARAMETERS":"If defined, specifies which object and its attributes should be updated. Remove leading _ to enable",
+  "_update_parameters":{"user_attributes":{"ls_rc_url":{"default_value":"<NEW URL WITH HOSTNAME>",
+                                                       "label":"ChangeME LS RC URL"
+                                                      },
+                                          "access_user_id":{"label":"LS User Login ID"}
+                                         },
+                       "roles":[]
+                      },
+  "replace_token_map":{"@MODEL_TOKEN@":"My Custom Model label",
+                       "@EXPLORE_TOKEN@":"My Custom Explore label",
+                       "@DASHBOARD_TOKEN@":"My Custom Dashboard label"
+                      }
+
+}
